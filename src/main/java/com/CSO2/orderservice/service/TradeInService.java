@@ -1,6 +1,6 @@
 package com.CSO2.orderservice.service;
 
-import com.CSO2.orderservice.dto.TradeInSubmitRequest;
+import com.CSO2.orderservice.dto.request.TradeInSubmitRequest;
 import com.CSO2.orderservice.entity.TradeInRequest;
 import com.CSO2.orderservice.repository.TradeInRepository;
 import lombok.RequiredArgsConstructor;
