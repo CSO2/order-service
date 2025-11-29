@@ -1,13 +1,13 @@
 package com.CSO2.orderservice.service;
 
-import com.CSO2.orderservice.dto.CheckoutRequest;
-import com.CSO2.orderservice.dto.OrderDetailDTO;
-import com.CSO2.orderservice.dto.OrderSummaryDTO;
+import com.CSO2.orderservice.dto.request.CheckoutRequest;
+import com.CSO2.orderservice.dto.response.OrderDetailDTO;
+import com.CSO2.orderservice.dto.response.OrderSummaryDTO;
 import com.CSO2.orderservice.client.CartClient;
 import com.CSO2.orderservice.client.CatalogClient;
-import com.CSO2.orderservice.dto.CartDTO;
-import com.CSO2.orderservice.dto.CartItemDTO;
-import com.CSO2.orderservice.dto.StockCheckItem;
+import com.CSO2.orderservice.dto.response.CartDTO;
+import com.CSO2.orderservice.dto.response.CartItemDTO;
+import com.CSO2.orderservice.dto.request.StockCheckItem;
 import com.CSO2.orderservice.entity.Order;
 import com.CSO2.orderservice.entity.OrderItem;
 import com.CSO2.orderservice.repository.OrderRepository;

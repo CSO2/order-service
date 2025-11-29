@@ -1,4 +1,4 @@
-package com.CSO2.orderservice.dto;
+package com.CSO2.orderservice.dto.request;
 
 import lombok.Data;
 import java.util.Map;

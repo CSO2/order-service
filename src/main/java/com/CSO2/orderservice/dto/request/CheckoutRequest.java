@@ -1,4 +1,4 @@
-package com.CSO2.orderservice.dto;
+package com.CSO2.orderservice.dto.request;
 
 import com.CSO2.orderservice.entity.ShippingAddress;
 import lombok.Data;

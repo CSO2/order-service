@@ -1,6 +1,6 @@
 package com.CSO2.orderservice.controller;
 
-import com.CSO2.orderservice.dto.TradeInSubmitRequest;
+import com.CSO2.orderservice.dto.request.TradeInSubmitRequest;
 import com.CSO2.orderservice.service.TradeInService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

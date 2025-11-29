@@ -1,6 +1,6 @@
 package com.CSO2.orderservice.client;
 
-import com.CSO2.orderservice.dto.CartDTO;
+import com.CSO2.orderservice.dto.response.CartDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.CSO2.orderservice.dto;
+package com.CSO2.orderservice.dto.response;
 
 import com.CSO2.orderservice.entity.OrderItem;
 import com.CSO2.orderservice.entity.ShippingAddress;

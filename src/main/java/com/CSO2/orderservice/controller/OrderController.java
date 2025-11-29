@@ -1,8 +1,8 @@
 package com.CSO2.orderservice.controller;
 
-import com.CSO2.orderservice.dto.CheckoutRequest;
-import com.CSO2.orderservice.dto.OrderDetailDTO;
-import com.CSO2.orderservice.dto.OrderSummaryDTO;
+import com.CSO2.orderservice.dto.request.CheckoutRequest;
+import com.CSO2.orderservice.dto.response.OrderDetailDTO;
+import com.CSO2.orderservice.dto.response.OrderSummaryDTO;
 import com.CSO2.orderservice.entity.Order;
 import com.CSO2.orderservice.service.OrderProcessingService;
 import lombok.RequiredArgsConstructor;

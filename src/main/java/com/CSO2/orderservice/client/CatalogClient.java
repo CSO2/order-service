@@ -1,6 +1,6 @@
 package com.CSO2.orderservice.client;
 
-import com.CSO2.orderservice.dto.StockCheckItem;
+import com.CSO2.orderservice.dto.request.StockCheckItem;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
