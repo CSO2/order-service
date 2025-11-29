@@ -1,16 +1,17 @@
 package com.CSO2.orderservice.service;
 
-import com.CSO2.orderservice.dto.request.CheckoutRequest;
-import com.CSO2.orderservice.dto.response.OrderDetailDTO;
-import com.CSO2.orderservice.dto.response.OrderSummaryDTO;
 import com.CSO2.orderservice.client.CartClient;
 import com.CSO2.orderservice.client.CatalogClient;
-import com.CSO2.orderservice.dto.response.CartDTO;
-import com.CSO2.orderservice.dto.response.CartItemDTO;
+import com.CSO2.orderservice.dto.request.CheckoutRequest;
 import com.CSO2.orderservice.dto.request.StockCheckItem;
+import com.CSO2.orderservice.dto.response.CartDTO;
+import com.CSO2.orderservice.dto.response.OrderDetailDTO;
+import com.CSO2.orderservice.dto.response.OrderSummaryDTO;
 import com.CSO2.orderservice.entity.Order;
 import com.CSO2.orderservice.entity.OrderItem;
 import com.CSO2.orderservice.repository.OrderRepository;
+import com.CSO2.orderservice.service.shipping.ShippingStrategy;
+import com.CSO2.orderservice.service.shipping.ShippingStrategyFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,7 @@ public class OrderProcessingService {
     private final OrderRepository orderRepository;
     private final CartClient cartClient;
     private final CatalogClient catalogClient;
+    private final ShippingStrategyFactory shippingStrategyFactory;
 
     @Transactional
     public Order createOrder(String userId, CheckoutRequest req) {
@@ -54,10 +56,13 @@ public class OrderProcessingService {
         order.setStatus(Order.OrderStatus.PENDING);
         order.setTotalAmount(cart.getTotalValue());
 
-        // Calculate tax and shipping (simple logic for now)
+        // Calculate tax and shipping
         BigDecimal tax = cart.getTotalValue().multiply(new BigDecimal("0.1"));
         order.setTaxAmount(tax);
-        order.setShippingCost(new BigDecimal("10.00")); // Flat rate
+
+        // Use the Strategy pattern to calculate shipping cost
+        ShippingStrategy shippingStrategy = shippingStrategyFactory.getStrategy(req.getShippingMethod());
+        order.setShippingCost(shippingStrategy.calculateCost(order));
 
         // Address from request
         order.setAddress(req.getShippingAddress());
