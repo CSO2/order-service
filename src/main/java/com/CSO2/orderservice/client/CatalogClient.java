@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "product-catalogue-service", url = "http://localhost:8082")
+@FeignClient(name = "product-catalogue-service", url = "${catalog.service.url:http://localhost:8082}")
 public interface CatalogClient {
 
     @PostMapping("/api/products/validate-stock")
