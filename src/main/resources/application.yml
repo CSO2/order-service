@@ -1,0 +1,54 @@
+# --- Order Service Configuration ---
+spring:
+  application:
+    name: order-service
+
+  # 1. Config Import: Load properties from Vault first
+  config:
+    import: "optional:vault://"
+
+  # 2. Vault Configuration
+  cloud:
+    vault:
+      enabled: true
+      uri: http://localhost:8200
+      token: my-root-token
+      kv:
+        enabled: true
+        backend: kv
+        default-context: cs02-app
+      authentication: TOKEN
+
+  # 3. Data Source Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/CSO2_order_service
+    driver-class-name: org.postgresql.Driver
+    username: ${db_username}
+    password: ${db_password}
+
+  # 4. JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: ${JPA_SHOW_SQL:true}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+# --- Server Port ---
+server:
+  port: 8083
+
+# --- Feign Clients ---
+spring.cloud.openfeign.client.config.default:
+  connectTimeout: 5000
+  readTimeout: 5000
+
+# --- Custom Service URLs ---
+catalog:
+  service:
+    url: ${CATALOG_SERVICE_URL:http://localhost:8082}
+cart:
+  service:
+    url: ${CART_SERVICE_URL:http://localhost:8084}
